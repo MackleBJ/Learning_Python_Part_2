@@ -1,0 +1,42 @@
+def greet_customer(data, visitor):
+  name_list = []
+  numb_list = []
+  
+  for name, vis in customer_data.items(): #extracts names & # of visits
+    numb_visits = vis['visits']
+    numb_list.append(numb_visits)         #assigns # of visits to list
+    name_list.append(name)         
+    
+  if visitor not in name_list:     #create 'message' for 1st visit
+    message = 'Welcome! Is this your first time?'
+  else:
+    pos = name_list.index(visitor)
+    visits = numb_list[pos]
+    if visits == 1:                  #create 'message' for multiple visits
+      message = 'Welcome back, ' + visitor + "! We're glad you liked us the first time!"
+    elif visits >= 1:
+      message = 'Welcome back, ' + visitor + "! It's good to see a regular customer"
+  return message
+
+customer_data = {
+    'Joe': {
+        'visits': 1
+    },
+    'Carol': {
+        'visits': 2
+    },
+    'Howard': {
+        'visits': 3
+    },
+    'Carrie': {
+        'visits': 4
+    },
+    'Emily': {
+        'visits': 1
+    },
+    'Huralain': {
+        'visits': 2
+    }
+} 
+
+print(greet_customer(customer_data, 'Emily'))
