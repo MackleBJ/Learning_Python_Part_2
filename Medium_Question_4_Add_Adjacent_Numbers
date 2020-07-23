@@ -1,0 +1,18 @@
+def add_neighbors(numb):
+  sums = []
+  numbers= []
+  itr_1 = 0
+  itr_2 = 1
+  y = len(numb)
+  
+  while itr_2 <= y:
+    sum = numb[itr_1] + numb[itr_2]   #have them added together sum()
+    itr_1 = itr_1 + 2       
+    itr_2 = itr_2 + 2       #continue to next two indecies by adding 2 to each index[]
+    sums.append(sum)
+    
+  return sums
+  
+numbers = [1, 2, 3, 4, 5, 6]
+
+print(add_neighbors(numbers))
