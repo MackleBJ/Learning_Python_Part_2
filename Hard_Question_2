@@ -1,0 +1,177 @@
+def longest_morse_code_words(words):
+  alphabet_m = [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."]
+  alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'] #alphabet in a list
+  morse_list = []
+  len_list = []
+  len_list_2 = []
+  alpha_list = []
+  
+  for word in words: #extract each letter of a word with a for loop
+    morse = None
+    letter_count = 0
+    for letter in word:
+      position = alphabet.index(letter) #find the index of the letters above with index()
+      if morse == None: 
+        morse = alphabet_m[position]    #print words in morse code with extracting from list with []
+        letter_count = letter_count + 1
+      else: 
+        morse = morse + alphabet_m[position]  #print words in morse code with extracting from list with []
+        letter_count = letter_count + 1
+      if letter_count == 3:
+        morse_list.append(morse)
+        len_list.append(len(morse)) #print length of morse code with len()
+        len_list_2.append(len(morse))
+
+#a lot of iterations to go through a lot of scenarios
+  if len(words) == 4: #alphabitize words if they are tied in length
+    if len_list[0] == len_list[1] and len_list[0] == len_list[2] and len_list[0] == len_list[3]:
+      for word in words:
+        maxi = max(words)
+        print(maxi)
+        alpha_list.append(maxi)
+        pos = words.index(maxi)
+        len_list.remove(len_list[pos])
+        words.remove(maxi)
+        
+    elif len_list[0] == len_list[1] and len_list[0] == len_list[2]:
+      if len_list[3] > len_list[0]:
+        alpha_list.append(words[3])
+        len_list.remove(len_list[3])
+        words.remove(words[3])
+      else:
+        maxi = max(len_list[0], len_list[1], len_list[2])
+        alpha_list.append(maxi)
+        pos = words.index(maxi)
+        len_list.remove(len_list[pos])
+        words.remove(maxi)
+    
+    elif len_list[0] == len_list[2] and len_list[0] == len_list[3]:
+      if len_list[1] > len_list[0]:
+        alpha_list.append(words[1])
+        len_list.remove(len_list[1])
+        words.remove(words[1])
+      else:
+        maxi = max(len_list[0], len_list[2], len_list[3])
+        alpha_list.append(maxi)
+        pos = words.index(maxi)
+        len_list.remove(len_list[pos])
+        words.remove(maxi)
+    
+    elif len_list[0] == len_list[1] and len_list[0] == len_list[3]:
+      if len_list[2] > len_list[0]:
+        alpha_list.append(words[2])
+        len_list.remove(len_list[2])
+        words.remove(words[2])
+      else:
+        maxi = max(len_list[0], len_list[1], len_list[3])
+        pos = words.index(maxi)
+        len_list.remove(len_list[pos])
+        alpha_list.append(maxi)
+        words.remove(maxi) 
+    
+    elif len_list[0] == len_list[1]:
+      if len_list[2] > len_list[0]:
+        alpha_list.append(words[2])
+        len_list.remove(len_list[2])
+        words.remove(words[2])
+      else:
+        maxi = max(len_list[0], len_list[1])
+        alpha_list.append(maxi)
+        pos = words.index(maxi)
+        len_list.remove(len_list[pos])
+        words.remove(maxi)
+
+    elif len_list[0] == len_list[2]:
+      if len_list[2] > len_list[0]:
+        alpha_list.append(words[2])
+        len_list.remove(len_list[2])
+        words.remove(words[2])
+      else:
+        maxi = max(len_list[0], len_list[1])
+        alpha_list.append(maxi)
+        pos = words.index(maxi)
+        len_list.remove(len_list[pos])
+        words.remove(maxi)
+
+    elif len_list[0] == len_list[3]:
+      if len_list[2] > len_list[0]:
+        alpha_list.append(words[2])
+        len_list.remove(len_list[2])
+        words.remove(words[2])
+      else:
+        maxi = max(len_list[0], len_list[1])
+        alpha_list.append(maxi)
+        pos = words.index(maxi)
+        len_list.remove(len_list[pos])
+        words.remove(maxi)
+  
+  if len(words) == 3:
+    if len_list[0] == len_list[1] and len_list[0] == len_list[2]:
+      for word in words:
+        maxi = max(words)
+        alpha_list.append(maxi)
+        pos = words.index(maxi)
+        len_list.remove(len_list[pos])
+        words.remove(maxi)
+      
+    elif len_list[0] == len_list[1]:
+      if len_list[2] > len_list[0]:
+        alpha_list.append(words[2])
+        len_list.remove(len_list[2])
+        words.remove(words[2])
+      else:
+        maxi = max(len_list[0], len_list[1])
+        alpha_list.append(maxi)
+        pos = words.index(maxi)
+        len_list.remove(len_list[pos])
+        words.remove(maxi)
+    
+    elif len_list[0] == len_list[2]:
+      if len_list[1] > len_list[0]:
+        alpha_list.append(words[1])
+        len_list.remove(len_list[1])
+        words.remove(words[1])
+      else:
+        maxi = max(len_list[0], len_list[2])
+        alpha_list.append(maxi)
+        pos = words.index(maxi)
+        len_list.remove(len_list[pos])
+        words.remove(maxi)
+  
+  if len(words) == 2: 
+    
+    if len_list[0] == len_list[1]:
+      for word in words:
+        mini = min(words)
+        alpha_list.append(mini)
+        pos = words.index(mini)
+        len_list.remove(len_list[pos])
+        words.remove(mini)
+      
+    elif len_list[0] == len_list[1]:
+      if len_list[2] > len_list[0]:
+        alpha_list.append(words[2])
+        len_list.remove(len_list[2])
+        words.remove(words[2])
+      else:
+        mini = max(len_list[0], len_list[1])
+        alpha_list.append(mini)
+        pos = words.index(mini)
+        len_list.remove(len_list[pos])
+        words.remove(mini)
+    else:
+      mini = min(words[0], words[1])
+      alpha_list.append(mini)
+      pos = words.index(mini)
+      len_list.remove(len_list[pos])
+      words.remove(mini)
+  if len(words) == 1:
+    alpha_list.append(words[0])
+    len_list.remove(len_list[0])
+    words.remove(words[0])
+  
+  message = f"The Morse Code equivalent of the words above is {morse_list}. Ordered by length, it's {sorted(len_list_2)}. When we alphabitize based off of length in descending order, the output should be {alpha_list}"
+  return alpha_list
+words = ["zen", "gig"]
+
+print(longest_morse_code_words(words))
