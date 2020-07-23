@@ -1,0 +1,22 @@
+def to_rodcase(string):
+  string_list = string.split() #split() string 
+ 
+  itr = 0
+  combined_words = None
+  
+  for words in string_list:
+    if itr == 0: 
+      string_list[itr] = string_list[itr].lower() #first word .lower()
+      if combined_words == None:
+        combined_words = string_list[itr] + ' '
+      itr = itr + 1
+      continue
+    else:
+      string_list[itr] =string_list[itr].title() #all other words .title()
+      combined_words = combined_words + string_list[itr] + ' '
+      itr = itr + 1
+      continue
+  
+  return combined_words.strip().replace(' ', 'ROD')
+
+print(to_rodcase("Hello there stealth warrior"))
