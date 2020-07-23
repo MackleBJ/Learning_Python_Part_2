@@ -1,0 +1,126 @@
+def convert_table(some_data):
+  itr_2 = 0
+  dict = {}
+  dict_1 = {}
+  dict_2 = {}
+  alpha_list = []
+  
+  for column in some_data:
+    itr = 0
+    dict_timer = 0
+    for cell in column:
+      if itr == 0:                  #create an iteration for 0-3 and set values for description
+        if itr_2 == 0:
+          first_name = cell #age
+          itr = itr + 1
+          continue
+        elif itr_2 == 1:       
+          first_info = cell
+          itr = itr + 1
+          dict[first_name] = first_info #age_info
+          continue
+        elif itr_2 == 2:       
+          first_info = cell
+          itr = itr + 1
+          dict_1[first_name] = first_info
+          continue
+        elif itr_2 == 3:       
+          first_info = cell
+          itr = itr + 1
+          dict_2[first_name] = first_info
+          continue
+      elif itr == 1:
+        if itr_2 == 0:              #create an iteration for 0-3 and set values for description
+          last_name = cell #first_name_2
+          itr = itr + 1
+          continue
+        elif itr_2 == 1:       
+          last_info = cell
+          itr = itr + 1
+          dict[last_name] = last_info #first_name_info
+          continue
+        elif itr_2 == 2:       
+          last_info = cell
+          itr = itr + 1
+          dict_1[last_name] = last_info
+          continue  
+        elif itr_2 == 3:       
+          last_info = cell
+          itr = itr + 1
+          dict_2[last_name] = last_info
+          continue
+      elif itr == 2:
+        if itr_2 == 0:              #create an iteration for 0-3 and set values for description
+          city = cell #gender
+          itr = itr + 1
+          if len(column) == 3:
+            itr_2 = itr_2 + 1
+          continue
+        elif itr_2 == 1:              
+          city_info = cell
+          itr = itr + 1
+          dict[city] = city_info #gender info
+          if len(column) == 3:
+            alpha_list.append(dict)
+            itr_2 = itr_2 + 1
+          continue
+        elif itr_2 == 2:              
+          city_info = cell
+          itr = itr + 1
+          dict_1[city] = city_info
+          if len(column) == 3:
+            alpha_list.append(dict_1)
+            itr_2 = itr_2 + 1
+          continue  
+        elif itr_2 == 3:              
+          city_info = cell
+          itr = itr + 1
+          dict_2[city] = city_info
+          if len(column) == 3:
+            alpha_list.append(dict_2)
+            itr_2 = itr_2 + 1
+          continue
+      elif itr == 3:
+        if itr_2 == 0:              
+          state = cell
+          itr = itr + 1
+          itr_2 = itr_2 + 1
+          continue
+        elif itr_2 == 1:       
+          state_info = cell
+          itr = itr + 1
+          itr_2 = itr_2 + 1
+          dict[state] = state_info
+          alpha_list.append(dict)
+        elif itr_2 == 2:       
+          state_info = cell
+          itr = itr + 1
+          itr_2 = itr_2 + 1
+          dict_1[state] = state_info
+          alpha_list.append(dict_1)
+        elif itr_2 == 3:       
+          state_info = cell
+          itr = itr + 1
+          itr_2 = itr_2 + 1
+          dict_2[state] = state_info
+          alpha_list.append(dict_2)
+          continue
+        
+  return alpha_list
+  
+table_data = [
+    ["first_name", "last_name", "city", "state"],
+    ["Elisabeth", "Gardenar", "Toledo", "OH"],
+    ["Jamaal", "Du", "Sylvania", "OH"],
+    ["Kathlyn", "Lavoie", "Maumee", "OH"]
+]
+
+table_data_2 = [
+    ['age', 'first_name', 'gender'],
+    [11, 'Elisabeth', 'female'],
+    [92, 'Jammal', 'male'],
+    [32, 'Kathlyn', 'x']
+]
+
+
+print(convert_table(table_data_2))
